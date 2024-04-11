@@ -45,4 +45,10 @@ app.put("/cachorros/:id", (req, res) => {
     res.status(200).json(cachorros);
 });
 
+app.delete("/cachorros/:id", (req, res) => {
+    const index = buscarCachorro(req.params.id);
+    cachorros.splice(index, 1);
+    res.status(200).send("Cachorro removido.");
+});
+
 export default app;
