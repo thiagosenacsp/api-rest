@@ -38,4 +38,11 @@ app.post("/cachorros", (req, res) => {
     res.status(201).send("Cachorro cadastrado com sucesso.")
 });
 
+app.put("/cachorros/:id", (req, res) => {
+    const index = buscarCachorro(req.params.id);
+    cachorros[index].raca = req.body.raca;
+    // body da requisição
+    res.status(200).json(cachorros);
+});
+
 export default app;
