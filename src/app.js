@@ -14,12 +14,23 @@ const cachorros = [
     }
 ]
 
+function buscarCachorro(id) {
+    return cachorros.findIndex(cachorro => {
+        return cachorro.id === Number(id);
+    })
+}
+
 app.get("/", (req, res) => {
     res.status(200).send("Curso de Node.js");
 });
 
 app.get("/cachorros", (req, res) => {
     res.status(200).json(cachorros);
+});
+
+app.get("/cachorros/:id", (req, res) => {
+    const index = buscarCachorro(req.params.id);
+    res.status(200).json(cachorros[index]);
 });
 
 app.post("/cachorros", (req, res) => {
