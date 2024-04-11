@@ -1,6 +1,7 @@
 import express from "express";
 
 const app = express();
+app.use(express.json()); // middleware
 
 const cachorros = [
     {
@@ -19,6 +20,11 @@ app.get("/", (req, res) => {
 
 app.get("/cachorros", (req, res) => {
     res.status(200).json(cachorros);
+});
+
+app.post("/cachorros", (req, res) => {
+    cachorros.push(req.body);
+    res.status(201).send("Cachorro cadastrado com sucesso.")
 });
 
 export default app;
