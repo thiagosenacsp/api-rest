@@ -1,6 +1,6 @@
 import express from "express";
 import conectarDatabase from "./config/dbconnect.js";
-import cachorro from "./models/Cachorro.js";
+import routes from "./routes/index.js";
 
 const conexao = await conectarDatabase();
 
@@ -12,11 +12,14 @@ conexao.once("open", () => {
 })
 
 const app = express();
-app.use(express.json()); // middleware
+routes(app);
+// app é a nosso instância do express
 
-app.get("/", (req, res) => {
-    res.status(200).send("Curso de Node.js");
-});
+// app.use(express.json()); // middleware
+
+// app.get("/", (req, res) => {
+//     res.status(200).send("Curso de Node.js");
+// });
 
 // app.get("/cachorros", async (req, res) => {
 //     const listaCachorros = await cachorro.find({})
@@ -28,10 +31,10 @@ app.get("/cachorros/:id", (req, res) => {
     res.status(200).json(cachorros[index]);
 });
 
-app.post("/cachorros", (req, res) => {
-    cachorros.push(req.body);
-    res.status(201).send("Cachorro cadastrado com sucesso.")
-});
+// app.post("/cachorros", (req, res) => {
+//     cachorros.push(req.body);
+//     res.status(201).send("Cachorro cadastrado com sucesso.")
+// });
 
 app.put("/cachorros/:id", (req, res) => {
     const index = buscarCachorro(req.params.id);
