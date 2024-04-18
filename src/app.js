@@ -26,22 +26,22 @@ routes(app);
 //     res.status(200).json(listaCachorros);
 // });
 
-app.get("/cachorros/:id", (req, res) => {
-    const index = buscarCachorro(req.params.id);
-    res.status(200).json(cachorros[index]);
-});
+// app.get("/cachorros/:id", (req, res) => {
+//     const index = buscarCachorro(req.params.id);
+//     res.status(200).json(cachorros[index]);
+// });
 
 // app.post("/cachorros", (req, res) => {
 //     cachorros.push(req.body);
 //     res.status(201).send("Cachorro cadastrado com sucesso.")
 // });
 
-app.put("/cachorros/:id", (req, res) => {
-    const index = buscarCachorro(req.params.id);
-    cachorros[index].raca = req.body.raca;
-    // body da requisição
-    res.status(200).json(cachorros);
-});
+// app.put("/cachorros/:id", (req, res) => {
+//     const index = buscarCachorro(req.params.id);
+//     cachorros[index].raca = req.body.raca;
+//     // body da requisição
+//     res.status(200).json(cachorros);
+// });
 
 app.delete("/cachorros/:id", (req, res) => {
     const index = buscarCachorro(req.params.id);
